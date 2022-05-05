@@ -18,23 +18,36 @@ print("The width and height of image is \n",image.shape)
 # cv.imshow("XYAxis Image",imageInvertedOnXYAxis)
 
 # Task No 2
-def fourSidedSquare(size):
-    image = np.zeros([size,size,3],dtype=np.uint8)
-    image.fill(255)
-    for i in range(image.shape[0]):
-        for j in range(image.shape[1]):
-            if 0 <= i < (size * 0.1) and 0 <= j < (size * 0.1):
-                image[i][j] = 0
-            if (size-(size*0.1)) <= i < (size) and (size-(size*0.1)) <= j < size:
-                image[i][j] = (0,255,0)
-            if (size-(size*0.1)) <= i < (size) and 0 <= j < (size * 0.1):
-                image[i][j] = (255,0,0)
-            if (size-(size*0.1)) <= j < (size) and 0 <= i < (size * 0.1):
-                image[i][j]= (0,0,255)
+# def fourSidedSquare(size):
+#     image = np.zeros([size,size,3],dtype=np.uint8)
+#     image.fill(255)
+#     for i in range(image.shape[0]):
+#         for j in range(image.shape[1]):
+#             if 0 <= i < (size * 0.1) and 0 <= j < (size * 0.1):
+#                 image[i][j] = 0
+#             if (size-(size*0.1)) <= i < (size) and (size-(size*0.1)) <= j < size:
+#                 image[i][j] = (0,255,0)
+#             if (size-(size*0.1)) <= i < (size) and 0 <= j < (size * 0.1):
+#                 image[i][j] = (255,0,0)
+#             if (size-(size*0.1)) <= j < (size) and 0 <= i < (size * 0.1):
+#                 image[i][j]= (0,0,255)
+#
+#     return image
+#
+# cv.imshow("Four Sided Boxes",fourSidedSquare(285))
+# cv.waitKey()
 
-    return image
 
-cv.imshow("Four Sided Boxes",fourSidedSquare(285))
+# Task no 3
+Width,Height=image.shape #Width and Height
+Left_Adjust=int(Width/10); #10% Left Right Adjust
+Total_Left_Count=Width+(2*Left_Adjust);
+Coloumn_Adjust=Total_Left_Count-Height;
+Total_Coloumn_Count=Coloumn_Adjust+Height;
+print(Width,Height);
+Borderedimage=np.zeros([Total_Coloumn_Count,Total_Left_Count],dtype=np.uint8)
+print(Borderedimage.shape)
+Borderedimage[Left_Adjust:Total_Left_Count-Left_Adjust,int(Coloumn_Adjust/2):Total_Coloumn_Count-int(Coloumn_Adjust/2)-1]=image[:,:]
+cv.imshow('pp',Borderedimage)
 cv.waitKey()
-
 
