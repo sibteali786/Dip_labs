@@ -39,15 +39,39 @@ print("The width and height of image is \n",image.shape)
 
 
 # Task no 3
-Width,Height=image.shape #Width and Height
-Left_Adjust=int(Width/10); #10% Left Right Adjust
-Total_Left_Count=Width+(2*Left_Adjust);
-Coloumn_Adjust=Total_Left_Count-Height;
-Total_Coloumn_Count=Coloumn_Adjust+Height;
-print(Width,Height);
-Borderedimage=np.zeros([Total_Coloumn_Count,Total_Left_Count],dtype=np.uint8)
-print(Borderedimage.shape)
-Borderedimage[Left_Adjust:Total_Left_Count-Left_Adjust,int(Coloumn_Adjust/2):Total_Coloumn_Count-int(Coloumn_Adjust/2)-1]=image[:,:]
-cv.imshow('pp',Borderedimage)
+# Width,Height=image.shape #Width and Height
+# Left_Adjust=int(Width/10); #10% Left Right Adjust
+# Total_Left_Count=Width+(2*Left_Adjust);
+# Coloumn_Adjust=Total_Left_Count-Height;
+# Total_Coloumn_Count=Coloumn_Adjust+Height;
+# print(Width,Height);
+# Borderedimage=np.zeros([Total_Coloumn_Count,Total_Left_Count],dtype=np.uint8)
+# print(Borderedimage.shape)
+# Borderedimage[Left_Adjust:Total_Left_Count-Left_Adjust,int(Coloumn_Adjust/2):Total_Coloumn_Count-int(Coloumn_Adjust/2)-1]=image[:,:]
+# cv.imshow('pp',Borderedimage)
+# cv.waitKey()
+
+
+# Task No 4
+# rotatedImageClockwise = cv.rotate(image,cv.cv2.ROTATE_90_CLOCKWISE)
+# cv.imwrite("rotatedEinstein.jpg",rotatedImageClockwise)
+# cv.imshow("Clockwise Rotated Image",rotatedImageClockwise)
+# cv.waitKey()
+
+# Task No 5
+scalePercent = 0.5
+width = int(image.shape[1]*scalePercent)
+height = int(image.shape[0]*scalePercent)
+dimension = (width,height)
+resized_InterArea = cv.resize(image,dimension,interpolation=cv.INTER_AREA)
+resized_InterNearest = cv.resize(image,dimension,interpolation=cv.INTER_NEAREST)
+resized_Linear = cv.resize(image,dimension,interpolation=cv.INTER_LINEAR)
+resized_Cubic = cv.resize(image,dimension,interpolation=cv.INTER_CUBIC)
+
+cv.imshow("Inter Area Interplotation",resized_InterArea)
+cv.imshow("Inter Nearest Interplotation",resized_InterNearest)
+cv.imshow("Linear Interplotation",resized_Linear)
+cv.imshow("Cubix Interplotation",resized_Cubic)
 cv.waitKey()
+
 
