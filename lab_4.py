@@ -70,3 +70,5 @@ for i in range(height):
 
 cv.imshow("Sliced Image",image)
 cv.waitKey()
+
+# Task No 5
